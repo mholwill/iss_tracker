@@ -1,28 +1,44 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>The International Space Station</h1>
+    <h2>{{issPoisition.latitude}}</h2>
+    <h1>{{this.astros[0].name}}</h1>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
+  data(){
+    return{
+      issData: {},
+      issPoisition: {},
+      astros: []
+    }
+  },
   components: {
-    HelloWorld
+
+  },
+  mounted(){
+    fetch('http://api.open-notify.org/iss-now.json')
+    .then(res => res.json())
+    .then((issData) => {
+      this.issData = issData
+      this.issPoisition = issData.iss_position});
+
+    fetch('http://api.open-notify.org/astros.json')
+    .then(res => res.json())
+    .then(astros => this.astros = astros.people)
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Helvetica, Arial, sans-serif;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 </style>
