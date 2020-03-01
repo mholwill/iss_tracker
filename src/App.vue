@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <h1>The International Space Station</h1>
-    <h2>{{issPosition.latitude}}</h2>
-    <!-- <h1>{{this.astros[0].name}}</h1> -->
-    <issTracker :issPosition="issPosition"></issTracker>
+    <h2>Latitude: <span>{{issPosition.latitude}}</span> Longitude: <span>{{issPosition.longitude}}</span></h2>
     <astrosList :astros="astros"></astrosList>
     <astroDetails :astro="selectedAstro"></astroDetails>
+    <!-- <h1>{{this.astros[0].name}}</h1> -->
+    <issTracker :issPosition="issPosition"></issTracker>
   </div>
 </template>
 
@@ -36,7 +36,7 @@ export default {
     'astroDetails': AstroDetails
   },
   mounted(){
-    fetch('http://api.open-notify.org/iss-now.json')
+    fetch('http://api.open-notify.org/iss-now.json?callback=')
     .then(res => res.json())
     .then((issData) => {
       this.issData = issData
@@ -54,9 +54,19 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Helvetica, Arial, sans-serif;
-  text-align: center;
-  margin-top: 60px;
-}
+  #app {
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  #app h1 {
+    font-family: 'Helvetica';
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+
+  span {
+    font-style: italic;
+  }
 </style>

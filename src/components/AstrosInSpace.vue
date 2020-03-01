@@ -23,8 +23,14 @@ export default {
 
 <style lang="css" scoped>
 
-  li {
+  list-item {
     text-decoration: none;
     list-style-type: none;
+    font-size: 70px;
   }
+
+  h1 {
+    font-size: 20px;
+  }
+
 </style>

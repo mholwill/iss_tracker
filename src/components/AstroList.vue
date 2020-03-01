@@ -1,5 +1,7 @@
 <template lang="html">
-  <li @click='handleClick'>{{astro.name}}</li>
+  <div class="list">
+    <li @click='handleClick'>{{astro.name}}</li>
+  </div>
 </template>
 
 <script>
@@ -17,4 +19,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+li {
+  color: white;
+  flex-direction: row;
+}
+
 </style>

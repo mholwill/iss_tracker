@@ -1,8 +1,7 @@
 
 <template lang="html">
 <div v-if='astro'>
-  <h3>{{astro.name}}</h3>
-  <p>Craft: {{astro.craft}}</p>
+  <!-- <h3>{{astro.name}}</h3> -->
 </div>
 </template>
 
@@ -10,10 +9,14 @@
 import { eventBus } from '../main.js';
 
 export default {
-name: 'munro-detail',
-props: ['astro']
+  name: 'astro-detail',
+  props: ['astro'],
 }
 </script>
 
 <style lang="css" scoped>
+
+img {
+  height: 200px
+}
 </style>
