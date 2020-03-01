@@ -1,50 +1,55 @@
-<template lang="html">
-  <div class="">
-    <h1>Hello</h1>
-    <div id="map"></div>
+<template>
+  <div id="map">
+    <h1>{{this.issPosition.latitude}}</h1>
+    <l-map
+      v-if="showMap"
+      :zoom="zoom"
+      :center="center"
+      :options="mapOptions"
+      style="height: 80%"
+      >
+      <l-tile-layer
+      :url="url"
+      :attribution="attribution"
+      />
+    </l-map>
   </div>
 </template>
-
 <script>
-import L from 'leaflet';
-
-export default {
-  name: "Iss-Tracker",
-  data(){
-    return {
-      map: null,
-      tileLayer: null,
-      layers: []
-    }
-  },
-  props: ['issPosition'],
-  mounted() {
-    this.initMap();
-    this.initLayers();
-  },
-  methods: {
-    initMap() {
-      this.map = L.map('map').setView([38.63, -90.23], 12);
-
-      this.tileLayer = L.tileLayer(
-        'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
-      {
-      maxZoom: 18,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
-      }
-      );
-      this.tileLayer.addTo(this.map);
+  import { latLng } from "leaflet";
+  import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+  export default {
+    name: 'App',
+    components: {
+      LMap,
+      LTileLayer,
+      LMarker
     },
-  initLayers() {},
-},
-}
-
-</script>
-
-<style lang="css" scoped>
-
-  #map {
-    height: 200px
+    props: ['issPosition'],
+    data() {
+      return {
+        zoom: 10,
+        center: latLng(this.issPosition.latitude, this.issPosition.longitude),
+        url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        currentZoom: 10,
+        center: latLng(this.issPosition.latitude, this.issPosition.longitude),
+        showParagraph: false,
+        mapOptions: {
+          zoomSnap: 0.5
+        },
+        showMap: true
+      }
+    }
   }
-
+</script>
+<style>
+  #yeah-baby{
+    height: 300px;
+  }
+  #map {
+    height: 500px;
+    width: 75%
+  }
 </style>
