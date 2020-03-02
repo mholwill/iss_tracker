@@ -4,7 +4,7 @@
     <h2>Latitude: <span>{{issPosition.latitude}}</span> Longitude: <span>{{issPosition.longitude}}</span></h2>
     <astrosList :astros="astros"></astrosList>
     <astroDetails :astro="selectedAstro"></astroDetails>
-    <issTracker :issPosition="issPosition"></issTracker>
+    <issTracker v-if="issPosition.longitude" :issPosition="issPosition"></issTracker>
   </div>
 </template>
 

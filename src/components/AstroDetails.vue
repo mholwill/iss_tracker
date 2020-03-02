@@ -1,7 +1,7 @@
 
 <template lang="html">
 <div v-if='astro'>
-  <!-- <h3>{{astro.name}}</h3> -->
+  <!-- <img v-if="astro.name" :src="@/public/images/AndrewMorgan.jpg" alt=""> -->
 </div>
 </template>
 
