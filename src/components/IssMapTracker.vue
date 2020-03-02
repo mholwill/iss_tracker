@@ -33,20 +33,20 @@
     data() {
       return {
         zoom: 5,
-        center: latLng(55.9533456, -3.1883749),
+        center: latLng(55.953251, -3.188267),
         url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
         attribution:
         'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
         currentZoom: 2,
-        center: latLng(55.9533456, -3.1883749),
+        center: latLng(55.953251, -3.188267),
         showParagraph: false,
-        marker: L.latLng(parseFloat(this.issPosition.latitude), parseFloat(this.issPosition.longitude)),
-        // myIcon: L.icon({
-        //   iconUrl: '../../public/images/ISS_Icon.png',
-        //   iconSize: [38, 95],
-        //   iconAnchor: [22, 94],
-        //   popupAnchor: [-3, -76],
-        // }),
+        marker: L.latLng(55.953251, -3.188267),
+        myIcon: L.icon({
+          iconUrl: '../../public/images/ISS_Icon.png',
+          iconSize: [38, 95],
+          iconAnchor: [22, 94],
+          popupAnchor: [-3, -76],
+        }),
         markerOptions: {
 
         },

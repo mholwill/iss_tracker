@@ -34,8 +34,6 @@ export default {
     'astroDetails': AstroDetails
   },
   mounted(){
-
-
       setInterval(() => {
         fetch('http://api.open-notify.org/iss-now.json?callback=')
         .then(res => res.json())
