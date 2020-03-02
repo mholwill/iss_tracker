@@ -27,6 +27,7 @@ export default {
     text-decoration: none;
     list-style-type: none;
     font-size: 70px;
+    margin-bottom: 40px;
   }
 
   h1 {

@@ -6,13 +6,14 @@
       :zoom="zoom"
       :center="center"
       :options="mapOptions"
-      style="height: 80%"
+      :setTimeout="setTimeout"
+      style="height: 100%"
       >
       <l-tile-layer
       :url="url"
       :attribution="attribution"
       />
-      <!-- <l-marker :lat-lng="markers"/> -->
+      <l-marker :lat-lng="marker"/>
     </l-map>
   </div>
 </div>
@@ -20,6 +21,7 @@
 <script>
   import { latLng } from "leaflet";
   import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+
   export default {
     name: 'App',
     components: {
@@ -30,7 +32,7 @@
     props: ['issPosition'],
     data() {
       return {
-        zoom: 2,
+        zoom: 5,
         center: latLng(55.9533456, -3.1883749),
         url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
         attribution:
@@ -38,14 +40,30 @@
         currentZoom: 2,
         center: latLng(55.9533456, -3.1883749),
         showParagraph: false,
-        // markers: [
-        //   L.latLng(55.9533456, -3.1883749)
-        // ],
+        marker: L.latLng(55.9533456, -3.1883749),
+        // myIcon: L.icon({
+        //   iconUrl: '../../public/images/ISS_Icon.png',
+        //   iconSize: [38, 95],
+        //   iconAnchor: [22, 94],
+        //   popupAnchor: [-3, -76],
+        // }),
+        markerOptions: {
+
+        },
         mapOptions: {
           zoomSnap: 0.5
         },
-        showMap: true
+        showMap: true,
+        setTimeout: 5000
       }
+    },
+    computed: {
+    // coridinates: function(){
+    //   let newArray=[],
+    //   let latitude = new Number(this.issPosition.latitude)
+    //   let longitude = new Number(this.issPosition.longtitude)
+    //   newArray.push(latitude, longitude)
+    // }
     }
   }
 </script>

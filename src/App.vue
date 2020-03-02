@@ -4,7 +4,6 @@
     <h2>Latitude: <span>{{issPosition.latitude}}</span> Longitude: <span>{{issPosition.longitude}}</span></h2>
     <astrosList :astros="astros"></astrosList>
     <astroDetails :astro="selectedAstro"></astroDetails>
-    <!-- <h1>{{this.astros[0].name}}</h1> -->
     <issTracker :issPosition="issPosition"></issTracker>
   </div>
 </template>
@@ -26,7 +25,6 @@ export default {
       issData: {},
       issPosition: {},
       astros: [],
-      issPass: {},
       selectedAstro: null
     }
   },
@@ -46,10 +44,12 @@ export default {
     .then(res => res.json())
     .then(astrosData => this.astros = astrosData.people)
 
-    eventBus.$on('astro-selected', (astro) => { //NEW
+    eventBus.$on('astro-selected', (astro) => {
      this.selectedAstro = astro;
     })
-  }
+  },
+  methods: {
+    }
 }
 </script>
 
