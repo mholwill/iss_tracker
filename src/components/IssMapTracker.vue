@@ -40,7 +40,7 @@
         currentZoom: 2,
         center: latLng(55.9533456, -3.1883749),
         showParagraph: false,
-        marker: L.latLng(55.9533456, -3.1883749),
+        marker: L.latLng(parseFloat(this.issPosition.latitude), parseFloat(this.issPosition.longitude)),
         // myIcon: L.icon({
         //   iconUrl: '../../public/images/ISS_Icon.png',
         //   iconSize: [38, 95],
@@ -58,12 +58,7 @@
       }
     },
     computed: {
-    // coridinates: function(){
-    //   let newArray=[],
-    //   let latitude = new Number(this.issPosition.latitude)
-    //   let longitude = new Number(this.issPosition.longtitude)
-    //   newArray.push(latitude, longitude)
-    // }
+
     }
   }
 </script>

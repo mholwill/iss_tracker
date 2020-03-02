@@ -34,11 +34,15 @@ export default {
     'astroDetails': AstroDetails
   },
   mounted(){
-    fetch('http://api.open-notify.org/iss-now.json?callback=')
-    .then(res => res.json())
-    .then((issData) => {
-      this.issData = issData
-      this.issPosition = issData.iss_position});
+
+
+      setInterval(() => {
+        fetch('http://api.open-notify.org/iss-now.json?callback=')
+        .then(res => res.json())
+        .then((issData) => {
+          this.issData = issData
+          this.issPosition = issData.iss_position});
+      }, 3000)
 
     fetch('http://api.open-notify.org/astros.json')
     .then(res => res.json())
